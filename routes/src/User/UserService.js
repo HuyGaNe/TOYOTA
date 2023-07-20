@@ -1,4 +1,4 @@
-const { use } = require('../routes/index');
+const { use } = require('../../index');
 const userModel = require('./UserModel');
 const bcrypt = require('bcryptjs');
 //1.kiem tra email,password

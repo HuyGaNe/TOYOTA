@@ -7,7 +7,7 @@ var indexRouter = require('./routes/index');
 var app = express();
 const  mongoose  = require('mongoose');
 const { MongoClient } = require('mongodb');
-const userAPIRouter = require("./routes/UserAPI");
+const userAPIRouter = require("./routes/api/UserAPI");
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -20,8 +20,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
- //http://localhost:3000/userapi
- app.use('/userapi',userAPIRouter);
+ //http://localhost:3000/api/user
+ app.use('/api/user',userAPIRouter);
 app.use('/', indexRouter);
 
 

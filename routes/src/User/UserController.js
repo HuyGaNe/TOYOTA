@@ -1,6 +1,6 @@
 const mailer=require('nodemailer');
 
-const { use } = require('../routes/index');
+const { use } = require('../../index');
 const userService =require('./UserService');
 const login = async (email,password)=>{
     return await userService.login(email,password);

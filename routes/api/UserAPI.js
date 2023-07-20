@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const jwt=require('jsonwebtoken');
-const userController = require('../routes/UserController');
+const userController = require('../../routes/src/User/UserController');
 const e = require('express');
-const {validationRegister}=require('../middle/Validation');
+const {validationRegister}=require('../../middle/Validation');
 
 
-//http://localhost:3000/userapi/login
+//http://localhost:3000/api/user/login
 //api login user
 router.post('/login', async (req, res, next) => {
     try {
@@ -25,7 +25,7 @@ router.post('/login', async (req, res, next) => {
         return res.status(500).json({ result: false, user: null });
     }
 });
-//http://localhost:3000/userapi/register
+//http://localhost:3000/api/user/register
 //api register user
 router.post('/register',[validationRegister], async (req, res, next) => {
     try {
