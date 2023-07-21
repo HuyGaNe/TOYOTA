@@ -5,9 +5,11 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var app = express();
+var bodyParser = require("body-parser");
 const  mongoose  = require('mongoose');
 const { MongoClient } = require('mongodb');
 const userAPIRouter = require("./routes/api/UserAPI");
+const subjectAPIRouter = require("./routes/api/SubjectAPI");
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -18,10 +20,17 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 
  //http://localhost:3000/api/user
  app.use('/api/user',userAPIRouter);
+ //http://localhost:3000/api/subject
+
+ app.use('/api/subject',subjectAPIRouter);
+
+
 app.use('/', indexRouter);
 
 
