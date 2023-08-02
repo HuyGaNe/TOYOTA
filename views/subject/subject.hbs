@@ -1,0 +1,76 @@
+<div class="container mt-5">
+
+  <div class="row">
+
+    <div class="col-sm-9" id="body">
+      <h2>Danh sách môn học</h2>
+      <table class="table table-striped" id="customers">
+        <thead>
+          <p>
+            <a href="/cpanel/subject/new" class="btn btn-success">Thêm mới</a>
+          </p>
+          <tr>
+            <th>Tên môn</th>
+            <th>Giáo viên đứng lớp</th>
+            <th>Loại Môn</th>
+            <th>Hành động</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each subject}}
+          <tr>
+            <td>{{this.nameSubject}}</td>
+            <td>{{this.nameTeacher}}</td>
+            <td>{{this.categorySubject}}</td>
+
+            <td><a href="/cpanel/subject/{{this._id}}/edit">Cập nhật </a> | <a onclick="confirmDelete('{{this._id}}')"
+                href="#"> Xóa </a></td>
+          </tr>
+          {{/each}}
+
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
+<script>
+  const fetchAPI = async (url, option) => {
+    const res = await fetch(url, option);
+    return res.json();
+  }
+  const deleteSubject = async (id) => {
+    const url = `http://localhost:3000/cpanel/subject/${id}/delete`;
+    const option = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' }
+    }
+    try {
+      const result = await fetchAPI(url, option);
+      console.log('Delete result:', result);
+      if (result.status) {
+        window.location.reload();
+      } else {
+        swal("Xoa that bai!", {
+          icon: "error",
+        });
+      }
+
+    } catch (e) { console.log('Delete error:', e) }
+  }
+  const confirmDelete = (id) => {
+    swal({
+      title: "Are you sure?",
+      text: "Ban muon xoa ?!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+      .then((willDelete) => {
+        if (willDelete) {
+          deleteSubject(id);
+        }
+      });
+  }
+
+</script>

@@ -1,0 +1,23 @@
+
+
+<div class="container mt-5">
+        <div class="col-sm-9" id="body">
+            <h3>Thêm mới môn học</h3>
+            <form id="formnews" action="/cpanel/subject/{{subject._id}}/edit" method="post" enctype="multipart/form-data">
+                <div id="formInput">
+                    <label for="fname">Tên môn</label><br>
+                    <input type="text" id="nameSubject" name="nameSubject" value="{{subject.nameSubject}}"><br>
+                    <label for="lname">Giáo viên đứng lớp</label><br>
+                    <input type="text" id="nameTeacher" name="nameTeacher" value="{{subject.nameTeacher}}"><br>
+                    <label for="lname">Loại môn</label><br>
+                    <input type="text" id="categorySubject" name="categorySubject" value="{{subject.categorySubject}}"><br>
+
+                    <button type="submit" class="btnSubmit">Submit</button>
+                </div>
+            </form>
+        </div>
+
+
+    </div>
+</div>
+</div>

@@ -10,6 +10,9 @@ const  mongoose  = require('mongoose');
 const { MongoClient } = require('mongodb');
 const userAPIRouter = require("./routes/api/UserAPI");
 const subjectAPIRouter = require("./routes/api/SubjectAPI");
+const scheduleAPIRouter=require("./routes/api/ScheduleAPI");
+
+const subjectCpanelRouter= require("./routes/cpanel/SubjectCpanel");
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -23,15 +26,21 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-
+app.use('/', indexRouter);
  //http://localhost:3000/api/user
  app.use('/api/user',userAPIRouter);
  //http://localhost:3000/api/subject
-
  app.use('/api/subject',subjectAPIRouter);
+ //http://localhost:3000/api/schedule
+ app.use('/api/schedule',scheduleAPIRouter);
 
 
-app.use('/', indexRouter);
+
+
+//http://localhost:3000/cpanel/subject
+ app.use('/cpanel/subject',subjectCpanelRouter);
+
+
 
 
 // catch 404 and forward to error handler
