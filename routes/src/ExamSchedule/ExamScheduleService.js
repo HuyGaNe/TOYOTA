@@ -1,17 +1,16 @@
 const { use } = require('../../index');
-const scheduleModel=require('./ScheduleModel');
-const bcrypt = require('bcryptjs');
+const examScheduleModel=require('./ExamScheduleModel');
 
-const getAllSchedule=async()=>{
+const getAllExamSchedule=async()=>{
     try {
         //lay toan bo mon hoc
-        return await scheduleModel.find().populate('idmon','nameSubject');
+        return await examScheduleModel.find().populate('idmon','nameSubject');
         
     } catch (error) {
         console.log("loi me r") 
     }
 }
-const addNewSchedule = async (idmon,cahoc, diadiem, ngayhoc) => {
+const addNewExamSchedule = async (idmon,cathi, diadiem, ngaythi) => {
     try {
         // const newProduct = {
         //     _id: data.length + 1,
@@ -22,10 +21,10 @@ const addNewSchedule = async (idmon,cahoc, diadiem, ngayhoc) => {
         //     category
         // }
         // data.push(newProduct);
-        const newSchedule = {
-            idmon, cahoc, diadiem,ngayhoc
+        const newExamSchedule = {
+            idmon, cathi, diadiem,ngaythi
         }
-        const p = new scheduleModel(newSchedule);
+        const p = new examScheduleModel(newExamSchedule);
         await p.save();
         return true;
     } catch (error) {
@@ -33,8 +32,8 @@ const addNewSchedule = async (idmon,cahoc, diadiem, ngayhoc) => {
         return false;
     }
 }
-// xoa lich hoc theo id
-const deleteScheduleById = async (id) => {
+// xoa lich thi theo id
+const deleteExamScheduleById = async (id) => {
     try {
         // const index = data.findIndex(item => item._id.toString() == id.toString());
         // if (index >= 0) {
@@ -42,7 +41,7 @@ const deleteScheduleById = async (id) => {
         //     return true;
         // }
         //return false
-        await scheduleModel.findByIdAndDelete(id);// mongodb
+        await examScheduleModel.findByIdAndDelete(id);// mongodb
         return true;
     } catch (error) {
         console.log('Delete product by Id error:', error);
@@ -51,4 +50,4 @@ const deleteScheduleById = async (id) => {
     }
 
 }
-module.exports={getAllSchedule,addNewSchedule,deleteScheduleById}
+module.exports={getAllExamSchedule,addNewExamSchedule,deleteExamScheduleById}

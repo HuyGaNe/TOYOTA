@@ -12,6 +12,16 @@ const getAllSubject = async()=>{
         console.log("loi me r") 
     }
 }
+const getSubject=async()=>{
+    try {
+        //lay toan bo mon hoc
+     
+        return await subjectModel.find({},'nameSUbject');
+        
+    } catch (error) {
+        console.log("loi me r ne") 
+    }
+}
 const addNewSubject = async (nameSubject, nameTeacher, categorySubject) => {
     try {
         // const newProduct = {
@@ -101,5 +111,5 @@ const updateSubjectById = async (id, nameSubject, nameTeacher, categorySubject) 
         return false;
     }
 }
-module.exports={getAllSubject,addNewSubject,deleteSubjectById,getSubjectById,updateSubjectById};
+module.exports={getAllSubject,addNewSubject,deleteSubjectById,getSubjectById,updateSubjectById,getSubject};
 

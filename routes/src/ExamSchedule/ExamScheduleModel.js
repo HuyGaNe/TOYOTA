@@ -2,13 +2,13 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const ObjectId = Schema.ObjectId;
 
-const scheduleSchema=new Schema({
+const examScheduleSchema=new Schema({
     id:{type:ObjectId},
     //tenmon:{type:String},
     idmon:{type: ObjectId,ref:'subject'},  
-    cahoc:{type: String}, 
+    cathi:{type: String}, 
     diadiem:{type:String},
-    ngayhoc:{type:String}
+    ngaythi:{type:String}
 });
 
-module.exports = mongoose.models.schedule || mongoose.model('schedule', scheduleSchema);
+module.exports = mongoose.models.examschedule || mongoose.model('examschedule', examScheduleSchema);

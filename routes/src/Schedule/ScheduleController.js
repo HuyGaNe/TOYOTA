@@ -7,9 +7,9 @@ const getAllSchedule=async()=>{
         throw error
     }
 }
-const addNewSchedule = async (subject, cahoc, diadiem,ngayhoc) => {
+const addNewSchedule = async (idmon, cahoc, diadiem,ngayhoc) => {
     try {
-        return await scheduleService.addNewSchedule(subject, cahoc, diadiem,ngayhoc);
+        return await scheduleService.addNewSchedule(idmon, cahoc, diadiem,ngayhoc);
     } catch (error) {
         return false;
     }

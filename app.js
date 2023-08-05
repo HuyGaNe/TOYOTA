@@ -8,10 +8,13 @@ var app = express();
 var bodyParser = require("body-parser");
 const  mongoose  = require('mongoose');
 const { MongoClient } = require('mongodb');
+//API
 const userAPIRouter = require("./routes/api/UserAPI");
 const subjectAPIRouter = require("./routes/api/SubjectAPI");
 const scheduleAPIRouter=require("./routes/api/ScheduleAPI");
+const examScheduleAPIRouter=require("./routes/api/ExamScheduleAPI");
 
+//Cpanel
 const subjectCpanelRouter= require("./routes/cpanel/SubjectCpanel");
 
 // view engine setup
@@ -33,6 +36,8 @@ app.use('/', indexRouter);
  app.use('/api/subject',subjectAPIRouter);
  //http://localhost:3000/api/schedule
  app.use('/api/schedule',scheduleAPIRouter);
+  //http://localhost:3000/api/exam-schedule
+  app.use('/api/exam-schedule',examScheduleAPIRouter);
 
 
 

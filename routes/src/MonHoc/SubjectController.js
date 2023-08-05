@@ -36,4 +36,11 @@ const updateSubjectById = async (id, nameSubject, nameTeacher, categorySubject )
         return false;
     }
 }
-module.exports={getAllSubject_V2,addNewSubject,deleteProductById,getSubjectById,updateSubjectById}
+const getSubject=async()=>{
+    try {
+        return await subjectService.getSubject();
+    } catch (error) {
+        throw error
+    }
+}
+module.exports={getAllSubject_V2,addNewSubject,deleteProductById,getSubjectById,updateSubjectById,getSubject}
